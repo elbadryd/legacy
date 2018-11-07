@@ -12,8 +12,9 @@ const Message = styled('div')`
 `;
 
 const ChatMessage = ({ nickname, message }) => (
-  <Message>
-    {
+  <div>
+    <Message>
+      {
       !nickname
       ? <i>{message}</i>
       : (
@@ -23,7 +24,9 @@ const ChatMessage = ({ nickname, message }) => (
         </div>
       )
     }
-  </Message>
+    </Message>
+  </div>
+
 );
 
 ChatMessage.propTypes = {

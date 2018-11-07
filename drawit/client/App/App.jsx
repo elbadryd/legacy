@@ -9,6 +9,7 @@ import ScreenCreateGame from '../screens/ScreenCreateGame';
 import ScreenGame from '../screens/ScreenGame';
 import { injectGlobalStyles } from '../styles';
 
+
 injectGlobalStyles();
 
 const App = () => (

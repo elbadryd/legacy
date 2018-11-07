@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import { Trans } from 'react-i18next';
 import StartGame from './StartGame';
 import Flex from '../Utils/Flex';
 import Button from '../Utils/Button';
@@ -44,7 +45,7 @@ const JoinCode = styled('div')`
 const TopBar = props => (
   <Container>
     {props.isAdmin && !props.started ? <StartGame addNotification={props.addNotification} /> : null}
-    {props.word ? <Word>{props.word}</Word> : null}
+    {props.word ? <Word><Trans>{props.word}</Trans></Word> : null}
     <ToggleScoreBoard onClick={props.toggleScoreBoard} active={props.showingScoreBoard}>
       <i className="fas fa-trophy" />
     </ToggleScoreBoard>

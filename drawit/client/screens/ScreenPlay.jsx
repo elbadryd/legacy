@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { Trans } from 'react-i18next';
 import JoinGame from '../components/Play/Join';
 import CreateGame from '../components/Play/CreateGame';
 import Centered from '../components/Utils/Centered';
