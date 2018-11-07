@@ -33,7 +33,7 @@ const ScreenPlay = ({ history }) => (
     <Container>
       <h1>Draw It!</h1>
       <JoinGame history={history} />
-      <span>or</span>
+      <span><Trans>or</Trans></span>
       <CreateGame />
     </Container>
   </Background>

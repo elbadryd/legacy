@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { Trans } from 'react-i18next';
 import axios from '../../axios';
 import Button from '../Utils/Button';
 import Input from '../Utils/Input';
@@ -42,8 +43,8 @@ class JoinGame extends PureComponent {
 
     return (
       <div>
-        <Input onChange={this.setJoinCode} placeholder="Join code" type="text" />
-        <Button onClick={this.join}>Play!</Button>
+        <Trans><Input onChange={this.setJoinCode} placeholder="Join code" type="text" /></Trans>
+        <Button onClick={this.join}><Trans>Play</Trans>!</Button>
         {error ? <p>{error}</p> : null}
       </div>
     );

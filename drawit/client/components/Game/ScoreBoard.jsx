@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'react-emotion';
+import { Trans } from 'react-i18next';
 import Flex from '../Utils/Flex';
 import Button from '../Utils/Button';
 
@@ -59,8 +60,8 @@ const sortByScore = (playerA, playerB) => {
 
 const ScoreBoard = ({ roundEnded, gameEnded, scores }) => (
   <Container>
-    {roundEnded ? <h1>Round Ended</h1> : null}
-    {!roundEnded && !gameEnded ? <h1>Scoreboard</h1> : null}
+    {roundEnded ? <h1><Trans>Round Ended</Trans></h1> : null}
+    {!roundEnded && !gameEnded ? <h1><Trans>Scoreboard</Trans>Scoreboard</h1> : null}
     {
       gameEnded
       ? (

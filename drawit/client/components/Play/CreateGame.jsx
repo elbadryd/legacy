@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
+import { Trans } from 'react-i18next';
 import Button from '../Utils/Button';
 
 const Container = styled('div')`
@@ -14,7 +15,7 @@ const Container = styled('div')`
 const CreateGame = () => (
   <Container>
     <Button color="primary">
-      <Link to="/create_game">Create a game</Link>
+      <Link to="/create_game"><Trans>Create a game</Trans></Link>
     </Button>
   </Container>
 );

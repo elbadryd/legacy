@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { connect } from 'react-redux';
 import styled from 'react-emotion';
+import { Trans } from 'react-i18next';
 import axios from '../axios';
 import Button from './Utils/Button';
 import Input from './Utils/Input';
@@ -92,18 +93,18 @@ class CreateGameForm extends PureComponent {
         <Container>
           <div>
             <label htmlFor="max-rounds">
-              <span>Max Rounds</span>
+              <span><Trans>Max Rounds</Trans></span>
               <Input onChange={this.setMaxRounds} value={maxRounds} id="max-rounds" type="number" />
             </label>
           </div>
           <div>
             <label htmlFor="max-players">
-              <span>Max Players</span>
+              <span><Trans>Max Players</Trans></span>
               <Input onChange={this.setMaxPlayers} value={maxPlayers} id="max-players" type="number" />
             </label>
           </div>
           <div>
-            <Button onClick={this.createGame}>Go!</Button>
+            <Button onClick={this.createGame}><Trans>Go</Trans>!</Button>
           </div>
           {error ? <p>{error}</p> : null}
         </Container>

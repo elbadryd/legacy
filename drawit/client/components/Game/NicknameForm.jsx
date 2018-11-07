@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import { Trans } from 'react-i18next';
 
 import Centered from '../Utils/Centered';
 import Button from '../Utils/Button';
@@ -81,9 +82,9 @@ class NicknameForm extends PureComponent {
   render() {
     return (
       <Container>
-        <h2>Enter A Nickname</h2>
+        <h2><Trans>Enter A Nickname</Trans></h2>
         <Input onChange={this.setNickname} placeholder="Nickname" type="text" />
-        <Button onClick={this.joinGame}>Join!</Button>
+        <Button onClick={this.joinGame}><Trans>Join</Trans>!</Button>
       </Container>
     );
   }
