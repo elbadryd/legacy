@@ -5,6 +5,7 @@ import { Trans } from 'react-i18next';
 import JoinGame from '../components/Play/Join';
 import CreateGame from '../components/Play/CreateGame';
 import Centered from '../components/Utils/Centered';
+import i18n from '../i18n';
 
 const Background = styled('div')`
   width: 100%;

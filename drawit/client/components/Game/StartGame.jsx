@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import { Trans } from 'react-i18next';
 import Button from '../Utils/Button';
 import socket from '../../sockets';
+import i18n from '../../i18n';
 
 const StartButton = styled(Button)`
   width: fit-content;
@@ -36,7 +38,7 @@ class StartGame extends PureComponent {
     const { addNotification } = this.props;
 
     this.setState({ starting: false });
-    addNotification({ message: error, level: 'error' });
+    addNotification({ message: i18n.t(error), level: 'error' });
   }
 
   start() {
@@ -51,8 +53,7 @@ class StartGame extends PureComponent {
 
     return (
       <div>
-        <StartButton onClick={this.start} disabled={starting} color="primary">
-          {starting ? 'Starting...' : 'Start Game'}
+        <StartButton onClick={this.start} disabled={starting} color="primary"><Trans>{starting ? 'Starting...' : 'Start Game'}</Trans>
         </StartButton>
       </div>
     );

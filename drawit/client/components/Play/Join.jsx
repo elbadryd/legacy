@@ -4,6 +4,7 @@ import { Trans } from 'react-i18next';
 import axios from '../../axios';
 import Button from '../Utils/Button';
 import Input from '../Utils/Input';
+import i18n from '../../i18n';
 
 class JoinGame extends PureComponent {
   constructor(props) {
@@ -30,22 +31,21 @@ class JoinGame extends PureComponent {
       axios.post('/codes', { joinCode })
         .then(response => (response.data.valid
           ? history.push(`/games/${joinCode}`)
-          : this.setState({ error: 'There are no games with that join code!' })
+          : this.setState({ error: i18n.t('There are no games with that join code!') })
         ))
-        .catch(() => this.setState({ error: 'There are no games with that join code!' }));
+        .catch(() => this.setState({ error: i18n.t('There are no games with that join code!') }));
     } else {
-      this.setState({ error: 'Join code must be at least 7 chars long.' });
+      this.setState({ error: i18n.t('Join code must be at least 7 chars long.') });
     }
   }
 
   render() {
     const { error } = this.state;
-
     return (
       <div>
-        <Trans><Input onChange={this.setJoinCode} placeholder="Join code" type="text" /></Trans>
+        <Input onChange={this.setJoinCode} placeholder={i18n.t('Join code')} type="text" />
         <Button onClick={this.join}><Trans>Play</Trans>!</Button>
-        {error ? <p>{error}</p> : null}
+        {error ? <p><Trans>{error}</Trans></p> : null}
       </div>
     );
   }

@@ -106,7 +106,7 @@ class CreateGameForm extends PureComponent {
           <div>
             <Button onClick={this.createGame}><Trans>Go</Trans>!</Button>
           </div>
-          {error ? <p>{error}</p> : null}
+          {error ? <p><Trans>{error}</Trans></p> : null}
         </Container>
       )
       : null;

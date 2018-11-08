@@ -85,17 +85,27 @@ const resources = {
       'Enter A Nickname': 'ingrese un apodo',
       Go: 'vaya!',
       Join: 'unirse',
-      'Join code': 'código de unión',
       'joined the game': 'se unió al juego',
       'Make a guess': 'haga una conjetura',
-      'Max players': 'jugadores máximos',
-      'Max rounds': 'rondas máximas',
+      'Max Players': 'jugadores máximos',
+      'Max Rounds': 'rondas máximas',
       Nickname: 'apodo',
       Play: 'jugar',
       or: 'o',
-      'round ended': 'ronda terminada',
+      'Round Ended': 'ronda terminada',
       Scoreboard: 'marcador',
-      'start game': 'comience el juego',
+      'Start Game': 'comience el juego',
+      'There must be more than 1 player to start the game.': 'Debe haber al menos 1 jugador más para comenzar el juego.',
+      'Join code': 'Código de unión',
+      'Join code must be at least 7 chars long.': 'El código de unión debe tener al menos 7 caracteres de largo.',
+      'This game has reached the maximum amount of players.': 'Este juego ha alcanzado la cantidad máxima de jugadores.',
+      'Please enter a nickname': 'Por favor ingrese un apodo',
+      'Nickname is already used.': 'El apodo ya está en uso.',
+      'The maximum amount of players for this game has been reached.': 'Se ha alcanzado la cantidad máxima de jugadores para este juego',
+      'There are no games with the join code:': 'No hay juegos con el código de unión:',
+      'Please enter a message': 'Por favor ingrese un mensaje',
+      'There are no games with that join code!': '¡No hay juegos con ese código de unión!',
+      'Only the admin can start the game.': 'Solo el administrador puede comenzar el juego.',
     },
   },
 };
@@ -111,6 +121,7 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
-  });
+  })
+  .addResourceBundle('es', 'spanish', resourceES);
 
 export default i18n;

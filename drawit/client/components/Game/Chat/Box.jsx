@@ -10,6 +10,7 @@ import {
   MessageInput,
   MessageButton,
 } from './styles';
+import i18n from '../../../i18n';
 
 const Window = React.forwardRef((props, ref) => (
   <div ref={ref} className={WindowStyles}>{props.children}</div>
@@ -47,7 +48,7 @@ class ChatBox extends PureComponent {
   }
 
   onGameJoined({ nickname }) {
-    const joinedMessage = `${nickname} joined the game`;
+    const joinedMessage = `${nickname} ${i18n.t('joined the game')}`;
     this.addMessage({ message: joinedMessage, nickname: null });
   }
 
@@ -83,12 +84,13 @@ class ChatBox extends PureComponent {
 
     if (!newMessage) {
       this.props.addNotification({
-        message: 'Please enter a message',
+        message: i18n.t('Please enter a message'),
         level: 'error',
         autoDismiss: 2,
       });
     } else {
       this.setState({ newMessage: '' });
+      // possibly translate this back to english to guess correct answer
       socket.emit('round:guess', { message: newMessage, nickname, joinCode });
     }
   }
@@ -114,7 +116,7 @@ class ChatBox extends PureComponent {
             onKeyPress={this.onKeyPress}
             value={newMessage}
             disabled={!canGuess}
-            placeholder="Make a guess"
+            placeholder={i18n.t('Make a guess')}
             type="text"
           />
           <MessageButton onClick={this.sendMessage} disabled={!canGuess}>

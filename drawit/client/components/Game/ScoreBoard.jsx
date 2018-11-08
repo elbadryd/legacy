@@ -61,7 +61,7 @@ const sortByScore = (playerA, playerB) => {
 const ScoreBoard = ({ roundEnded, gameEnded, scores }) => (
   <Container>
     {roundEnded ? <h1><Trans>Round Ended</Trans></h1> : null}
-    {!roundEnded && !gameEnded ? <h1><Trans>Scoreboard</Trans>Scoreboard</h1> : null}
+    {!roundEnded && !gameEnded ? <h1><Trans>Scoreboard</Trans></h1> : null}
     {
       gameEnded
       ? (
