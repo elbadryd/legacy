@@ -25,29 +25,31 @@ module.exports = async ({ data, socket, io }) => {
     const { message, nickname, joinCode } = data;
     const game = await findGameWithJoinCode(joinCode);
 
+    // const translate = new Translate({
+    //   projectId: projId,
+    // });
+    // const text = message;
+    // const target = 'en';
+    // translate.translate(text, target)
+    //   .then((results) => {
+    //     let translations = results[0];
+    //     translations = Array.isArray(translations)
+    //       ? translations
+    //       : [translations];
 
-    const translate = new Translate({
-      projectId: projId,
-    });
-    const text = message;
-    const target = 'en';
-    translate.translate(text, target)
-      .then((results) => {
-        let translations = results[0];
-        translations = Array.isArray(translations)
-          ? translations
-          : [translations];
-
-        console.log('Translations:');
-        translations.forEach((translation, i) => {
-          console.log(`${text[i]} => (${target}) ${translation}`);
-        });
-      })
-      .catch((err) => {
-        console.error('ERROR:', err);
-      });
-
-    // need to translate message and/or word
+    //     console.log('Translations:');
+    //     translations.forEach((translation, i) => {
+    //       console.log(`${text[i]} => (${target}) ${translation}`);
+    //       translated = translation;
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.error('ERROR:', err);
+    //   });
+    //   console.log(game.word);
+    //   console.log(translated);
+    //   console.log(message);
+    // translated.toLowerCase() === game.word || 
     if (message.toLowerCase() === game.word) {
       if (!socket.hasGuessedCorrect) {
         socket.hasGuessedCorrect = true;

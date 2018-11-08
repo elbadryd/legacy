@@ -121,7 +121,6 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
-  })
-  .addResourceBundle('es', 'spanish', resourceES);
+  });
 
 export default i18n;
