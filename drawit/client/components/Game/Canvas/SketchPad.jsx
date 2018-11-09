@@ -1,14 +1,16 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'react-emotion';
+import Flex from '../../Utils/Flex';
 import { setContextAction, setToolAction, addItemAction } from '../../../store/actions/game.actions';
 import { DEFAULT_TOOL } from './defaults';
 import tools from './tools';
 import socket from '../../../sockets';
 import { BorderStyles } from '../../../styles';
 
-const CANVAS_WIDTH = 500;
-const CANVAS_HEIGHT = 500;
+const CANVAS_WIDTH = window.innerHeight * 0.8;
+const CANVAS_HEIGHT = window.innerHeight * 0.7;
 
 class SketchPad extends PureComponent {
   constructor(props) {

@@ -25,7 +25,7 @@ class ChatBox extends PureComponent {
       newMessage: '',
     };
 
-    this.chatWindowRef = React.createRef();
+    // this.chatWindowRef = React.createRef();
     this.setMessage = this.setMessage.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
@@ -66,15 +66,15 @@ class ChatBox extends PureComponent {
     this.setState({ newMessage: target.value });
   }
 
-  scrollChatWindowToBottom() {
-    const chatWindow = this.chatWindowRef.current;
-    chatWindow.scrollTo(0, chatWindow.scrollHeight);
-  }
+  // scrollChatWindowToBottom() {
+  //   const chatWindow = this.chatWindowRef.current;
+  //   chatWindow.scrollTo(0, chatWindow.scrollHeight);
+  // }
 
   addMessage(message) {
     this.setState(
       { messages: [...this.state.messages, message] },
-      () => this.scrollChatWindowToBottom(),
+      // () => this.scrollChatWindowToBottom(),
     );
   }
 
@@ -101,7 +101,7 @@ class ChatBox extends PureComponent {
 
     return (
       <Container>
-        <Window ref={this.chatWindowRef}>
+        {/* <Window ref={this.chatWindowRef}>
           {messages.map(message => (
             <ChatMessage
               key={uuid()}
@@ -109,7 +109,7 @@ class ChatBox extends PureComponent {
               message={message.message}
             />
           ))}
-        </Window>
+        </Window> */}
         <EnterMessage>
           <MessageInput
             onChange={this.setMessage}

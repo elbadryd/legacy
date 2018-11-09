@@ -39,7 +39,7 @@ const startRound = ({ data, socket, io }) => {
               } else {
                 io.in(joinCode).emit('round:end', { word, scores: players });
                 setTimeout(() => {
-                  room.forEach(playerSocket => playerSocket.hasGuessedCorrect = false);
+                  room.forEach(playerSocket => playerSocket.edCorrect = false);
                   io.in(joinCode).emit('round:cleared');
                   startRound({ data, socket, io });
                 }, WAIT_AFTER_ROUND_ENDS);
