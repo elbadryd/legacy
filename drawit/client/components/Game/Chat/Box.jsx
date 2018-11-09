@@ -90,7 +90,7 @@ class ChatBox extends PureComponent {
       });
     } else {
       this.setState({ newMessage: '' });
-      // possibly translate this back to english to guess correct answer
+      //get this mesage to display in the window;
       socket.emit('round:guess', { message: newMessage, nickname, joinCode });
     }
   }

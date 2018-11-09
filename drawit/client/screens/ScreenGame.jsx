@@ -191,13 +191,13 @@ class ScreenGame extends PureComponent {
                   : null
                 }
                 <Canvas drawing={drawing} />
-                <ChatBox
-                  canGuess={canGuess}
-                  nickname={nickname}
-                  joinCode={joinCode}
-                  addNotification={this.addNotification}
-                />
               </Game>
+              <ChatBox
+                canGuess={canGuess}
+                nickname={nickname}
+                joinCode={joinCode}
+                addNotification={this.addNotification}
+              />
             </Container>
           )
         }

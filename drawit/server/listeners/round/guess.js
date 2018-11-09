@@ -1,6 +1,7 @@
 const { findGameWithJoinCode } = require('../../database/helpers');
 const { Translate } = require('@google-cloud/translate');
 const dotenv = require('dotenv');
+// const start = require('./start.js');
 
 dotenv.config();
 const projId = process.env.GOOGLE_PROJECT_ID;
@@ -51,10 +52,10 @@ module.exports = async ({ data, socket, io }) => {
                   : player
               ));
               game.save();
-      
               io.in(joinCode).emit('round:correct_guess', { nickname, scores: game.players });
             }
           } else {
+            console.log('message', message);
             io.in(joinCode).emit('round:incorrect_guess', { nickname, message });
           }
         });
@@ -62,7 +63,6 @@ module.exports = async ({ data, socket, io }) => {
       .catch((err) => {
         console.error('ERROR:', err);
       });
-
   } catch (error) {
     socket.emit('round:error', { error });
   }
