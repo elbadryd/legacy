@@ -31,6 +31,7 @@ class ChatBox extends PureComponent {
     this.onKeyPress = this.onKeyPress.bind(this);
     this.onGameJoined = this.onGameJoined.bind(this);
     this.onRoundIncorrectGuess = this.onRoundIncorrectGuess.bind(this);
+    this.onRoundCorrectGuess = this.onRoundCorrectGuess.bind(this);
   }
 
   componentDidMount() {
@@ -40,11 +41,13 @@ class ChatBox extends PureComponent {
 
     socket.on('game:joined', this.onGameJoined);
     socket.on('round:incorrect_guess', this.onRoundIncorrectGuess);
+    socket.on('round:correct_guess', this.onRoundCorrectGuess);
   }
 
   componentWillUnmount() {
     socket.off('game:joined', this.onGameJoined);
     socket.off('round:incorrect_guess', this.onRoundIncorrectGuess);
+    socket.off('round:correct_guess', this.onRoundCorrectGuess);
   }
 
   onGameJoined({ nickname }) {
@@ -54,11 +57,19 @@ class ChatBox extends PureComponent {
 
   onRoundIncorrectGuess(message) {
     this.props.addNotification({
-      message: `${message.nickname} guessed ${message.message}`,
+      message: `INCORRECT! \n ${message.nickname} guessed ${message.message}`,
       level: 'error',
       autoDismiss: 2,
     });
     // this.addMessage(message);
+  }
+
+  onRoundCorrectGuess(message) {
+    this.props.addNotification({
+      message: `CORRECT! \n ${message.nickname} guessed ${message.message}`,
+      level: 'error',
+      autoDismiss: 2,
+    });
   }
 
   onKeyPress({ key }) {
