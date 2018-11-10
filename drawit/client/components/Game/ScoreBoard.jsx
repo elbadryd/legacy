@@ -66,9 +66,9 @@ const ScoreBoard = ({ roundEnded, gameEnded, scores }) => (
       gameEnded
       ? (
         <Flex>
-          <h1>Game Ended</h1>
+          <h1><Trans>Game Ended</Trans></h1>
           <LeaveGame>
-            <Link to="/play">Leave</Link>
+              <Link to="/play"><Trans>Leave</Trans></Link>
           </LeaveGame>
         </Flex>
       )

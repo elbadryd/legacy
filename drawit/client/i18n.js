@@ -106,6 +106,8 @@ const resources = {
       'Please enter a message': 'Por favor ingrese un mensaje',
       'There are no games with that join code!': '¡No hay juegos con ese código de unión!',
       'Only the admin can start the game.': 'Solo el administrador puede comenzar el juego.',
+      'Game Ended': 'Juego terminado',
+      Leave: 'Salir',
     },
   },
   ch: {
@@ -210,6 +212,8 @@ const resources = {
       'Please enter a message': '请输入消息',
       'There are no games with that join code!': '没有加入代码的游戏',
       'Only the admin can start the game.': '只有管理员可以启动游戏',
+      'Game Ended': '游戏结束',
+      Leave: '离开',
     },
   },
 };

@@ -53,7 +53,12 @@ class ChatBox extends PureComponent {
   }
 
   onRoundIncorrectGuess(message) {
-    this.addMessage(message);
+    this.props.addNotification({
+      message: `${message.nickname} guessed ${message.message}`,
+      level: 'error',
+      autoDismiss: 2,
+    });
+    // this.addMessage(message);
   }
 
   onKeyPress({ key }) {
@@ -74,7 +79,6 @@ class ChatBox extends PureComponent {
   addMessage(message) {
     this.setState(
       { messages: [...this.state.messages, message] },
-      // () => this.scrollChatWindowToBottom(),
     );
   }
 
@@ -90,7 +94,7 @@ class ChatBox extends PureComponent {
       });
     } else {
       this.setState({ newMessage: '' });
-      //get this mesage to display in the window;
+      // get this mesage to display in the window;
       socket.emit('round:guess', { message: newMessage, nickname, joinCode });
     }
   }
@@ -111,6 +115,9 @@ class ChatBox extends PureComponent {
           ))}
         </Window> */}
         <EnterMessage>
+          <div>
+            {messages.map(message => <div><div>{message.nickname}</div><div>{message.message}</div></div>)}
+          </div>
           <MessageInput
             onChange={this.setMessage}
             onKeyPress={this.onKeyPress}
