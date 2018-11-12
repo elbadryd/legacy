@@ -52,7 +52,7 @@ module.exports = async ({ data, socket, io }) => {
                   : player
               ));
               game.save();
-              io.in(joinCode).emit('round:correct_guess', { nickname, scores: game.players });
+              io.in(joinCode).emit('round:correct_guess', { nickname, scores: game.players, message });
             }
           } else {
             console.log('message', message);
