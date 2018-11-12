@@ -38,6 +38,7 @@ class ScreenGame extends PureComponent {
       roundEnded: false,
       gameEnded: false,
       showScoreBoard: false,
+      artwork: null, // added
     };
 
     this.onGameJoined = this.onGameJoined.bind(this);
@@ -48,6 +49,9 @@ class ScreenGame extends PureComponent {
     this.onRoundEnd = this.onRoundEnd.bind(this);
     this.addNotification = this.addNotification.bind(this);
     this.toggleScoreBoard = this.toggleScoreBoard.bind(this);
+    this.saveImg = this.saveImg.bind(this); // added
+    this.updateArt = this.updateArt.bind(this); // added
+    this.twitterCall = this.twitterCall.bind(this); // added
   }
 
   componentDidMount() {
@@ -132,8 +136,48 @@ class ScreenGame extends PureComponent {
     this.setState({ showScoreBoard: !this.state.showScoreBoard });
   }
 
+  // added
+  updateArt(art) {
+    this.setState({ artwork: art });
+  }
+  // added;
+  saveImg() {
+    const image = this.state.artwork;
+    const head = 'data:image/png;base64,';
+    if (image !== null) {
+      const imgFileSize = Math.round((image.length - head.length) * 0.75);
+      console.log(imgFileSize);
+    }
+    return image;
+  }
+
   addNotification(notification) {
     this.notificationSystem.addNotification(notification);
+  }
+  // added
+  twitterCall() {
+    const randomString = (length) => {
+      let text = '';
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      for (let i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    };
+    console.log(randomString(42));
+    const pngImage = this.state.artwork.slice(22);
+    // console.log(this.state.artwork);
+    // media/upload
+    // fetch('https://upload.twitter.com/1.1/media/upload.json', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     media_data: pngImage,
+    //   }),
+    // });
   }
 
   render() {
@@ -177,6 +221,8 @@ class ScreenGame extends PureComponent {
                 showingScoreBoard={showScoreBoard}
                 addNotification={this.addNotification}
                 toggleScoreBoard={this.toggleScoreBoard}
+                saveImg={this.saveImg} // added
+                twitterCall={this.twitterCall} // added
               />
               <Game>
                 {
@@ -190,7 +236,16 @@ class ScreenGame extends PureComponent {
                   )
                   : null
                 }
-                <Canvas drawing={drawing} />
+                <Canvas
+                  drawing={drawing}
+                  updateArt={this.updateArt}
+                />
+                <ChatBox
+                  canGuess={canGuess}
+                  nickname={nickname}
+                  joinCode={joinCode}
+                  addNotification={this.addNotification}
+                />
               </Game>
               <ChatBox
                 canGuess={canGuess}

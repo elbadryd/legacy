@@ -33,13 +33,15 @@ class SketchPad extends PureComponent {
 
   componentWillReceiveProps({ items }) {
     const newItem = items.slice(-1)[0];
+    
 
     if (newItem) {
       const context = this.canvas.getContext('2d');
       const Tool = tools[newItem.tool];
       const tool = new Tool(context, newItem.options);
-
+     
       tool.drawItem(newItem);
+      this.props.updateArt(this.canvas.toDataURL());
     }
   }
 
@@ -64,6 +66,7 @@ class SketchPad extends PureComponent {
       const { tool, joinCode, dispatchItem } = this.props;
       const position = this.getCursorPosition(event);
       const item = tool.onMouseUp(position);
+      this.props.updateArt(this.canvas.toDataURL());
 
       if (item) {
         socket.emit('round:draw', { item, joinCode });
@@ -150,6 +153,7 @@ SketchPad.propTypes = {
   dispatchContext: PropTypes.func.isRequired,
   dispatchTool: PropTypes.func.isRequired,
   dispatchItem: PropTypes.func.isRequired,
+  updateArt: PropTypes.func.isRequired,
 };
 
 export default connect(

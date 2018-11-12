@@ -33,6 +33,30 @@ const ToggleScoreBoard = styled(Button)`
   }
 `;
 
+const TweetButton = styled(Button)`
+  transition: color 300ms ease-out;
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: unset;
+  color: ${props => (props.active ? '#000' : '#ccc')};
+  :hover {
+    color: #000;
+  }
+`;
+
+const ImgCapture = styled(Button)`
+  transition: color 300ms ease-out;
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: unset;
+  color: ${props => (props.active ? '#000' : '#ccc')};
+  :hover {
+    color: #000;
+  }
+  `;
+
 const JoinCode = styled('div')`
   width: fit-content;
   margin: auto 0;
@@ -49,6 +73,10 @@ const TopBar = props => (
     <ToggleScoreBoard onClick={props.toggleScoreBoard} active={props.showingScoreBoard}>
       <i className="fas fa-trophy" />
     </ToggleScoreBoard>
+    <ImgCapture > <a href={props.saveImg()} download="My Drawing"> <i className="far fa-save" /> </a></ImgCapture>
+    <TweetButton onClick={props.twitterCall}>
+      Tweet
+    </TweetButton>
     <JoinCode>
       <span>{props.joinCode}</span>
     </JoinCode>
@@ -67,6 +95,8 @@ TopBar.propTypes = {
   showingScoreBoard: PropTypes.bool.isRequired,
   addNotification: PropTypes.func.isRequired,
   toggleScoreBoard: PropTypes.func.isRequired,
+  saveImg: PropTypes.func.isRequired, // added
+  twitterCall: PropTypes.func.isRequired,
 };
 
 export default TopBar;
