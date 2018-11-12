@@ -1,25 +1,10 @@
 const { findGameWithJoinCode } = require('../../database/helpers');
 const { Translate } = require('@google-cloud/translate');
 const dotenv = require('dotenv');
-// const start = require('./start.js');
+const start = require('./start.js');
 
 dotenv.config();
 const projId = process.env.GOOGLE_PROJECT_ID;
-
-
-// const i18next = require('i18next');
-// const middleware = require('i18next-express-middleware');
-// const express = require('express');
-
-// i18next.use(middleware.LanguageDetector).init({
-//   preload: ['es'],
-// });
-
-// const app = express();
-// app.use(middleware.handle(i18next, {
-//   // ignoreRoutes: ['/foo'],  or function(req, res, options, i18next) { /* return true to ignore */ }
-//   removeLngFromUrl: false,
-// }));
 
 module.exports = async ({ data, socket, io }) => {
   try {
@@ -52,11 +37,11 @@ module.exports = async ({ data, socket, io }) => {
                   : player
               ));
               game.save();
-              io.in(joinCode).emit('round:correct_guess', { nickname, scores: game.players });
+              io.in(joinCode).emit('round:correct_guess', { nickname, scores: game.players, message });
             }
           } else {
+            io.in(joinCode).emit('round:incorrect_guess', { nickname, message });
             console.log('message', message);
-            // io.in(joinCode).emit('round:incorrect_guess', { nickname, message });
           }
         });
       })
@@ -67,3 +52,30 @@ module.exports = async ({ data, socket, io }) => {
     socket.emit('round:error', { error });
   }
 };
+
+// const { findGameWithJoinCode } = require('../../database/helpers');
+
+// module.exports = async ({ data, socket, io }) => {
+//   try {
+//     const { message, nickname, joinCode } = data;
+//     const game = await findGameWithJoinCode(joinCode);
+
+//     if (message.toLowerCase() === game.word) {
+//       if (!socket.hasGuessedCorrect) {
+//         socket.hasGuessedCorrect = true;
+//         game.players = game.players.map(player => (
+//           player.nickname === nickname
+//             ? { nickname, score: player.score + 1 }
+//             : player
+//         ));
+//         await game.save();
+
+//         io.in(joinCode).emit('round:correct_guess', { nickname, scores: game.players });
+//       }
+//     } else {
+//       io.in(joinCode).emit('round:incorrect_guess', { nickname, message });
+//     }
+//   } catch (error) {
+//     socket.emit('round:error', { error });
+//   }
+// };

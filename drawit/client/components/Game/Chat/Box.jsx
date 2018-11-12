@@ -25,7 +25,7 @@ class ChatBox extends PureComponent {
       newMessage: '',
     };
 
-    // this.chatWindowRef = React.createRef();
+    this.chatWindowRef = React.createRef();
     this.setMessage = this.setMessage.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
@@ -52,6 +52,11 @@ class ChatBox extends PureComponent {
 
   onGameJoined({ nickname }) {
     const joinedMessage = `${nickname} ${i18n.t('joined the game')}`;
+    // this.props.addNotification({
+    //   message: joinedMessage,
+    //   level: 'error',
+    //   autoDismiss: 2,
+    // });
     this.addMessage({ message: joinedMessage, nickname: null });
   }
 
@@ -82,10 +87,10 @@ class ChatBox extends PureComponent {
     this.setState({ newMessage: target.value });
   }
 
-  // scrollChatWindowToBottom() {
-  //   const chatWindow = this.chatWindowRef.current;
-  //   chatWindow.scrollTo(0, chatWindow.scrollHeight);
-  // }
+  scrollChatWindowToBottom() {
+    const chatWindow = this.chatWindowRef.current;
+    chatWindow.scrollTo(0, chatWindow.scrollHeight);
+  }
 
   addMessage(message) {
     this.setState(
@@ -116,7 +121,7 @@ class ChatBox extends PureComponent {
 
     return (
       <Container>
-        {/* <Window ref={this.chatWindowRef}>
+        <Window ref={this.chatWindowRef}>
           {messages.map(message => (
             <ChatMessage
               key={uuid()}
@@ -124,7 +129,7 @@ class ChatBox extends PureComponent {
               message={message.message}
             />
           ))}
-        </Window> */}
+        </Window>
         <EnterMessage>
           <div>
             {messages.map(message => <div><div>{message.nickname}</div><div>{message.message}</div></div>)}

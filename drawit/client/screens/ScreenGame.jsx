@@ -166,7 +166,7 @@ class ScreenGame extends PureComponent {
           : (
             <Container>
               {started && !roundEnded ? <CountDown date={new Date(89000)} /> : null}
-              {started && roundEnded ? <CountDown date={new Date(14000)} /> : null}
+              {started && roundEnded ? <CountDown date={new Date(5000)} /> : null}
               <TopBar
                 isAdmin={isAdmin}
                 started={started}
