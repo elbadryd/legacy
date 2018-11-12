@@ -59,7 +59,7 @@ const resources = {
       sock: 'calcetín',
       speaker: 'altavoz',
       star: 'estrella',
-      sun: 'Dom',
+      sun: 'sol',
       table: 'mesa',
       toothbrush: 'cepillo de dientes',
       tree: 'árbol',
@@ -108,7 +108,7 @@ const resources = {
       'Only the admin can start the game.': 'Solo el administrador puede comenzar el juego.',
     },
   },
-  ch: {
+  zh: {
     translation: {
       apple: '苹果',
       backpack: '背包',
