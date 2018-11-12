@@ -110,7 +110,7 @@ const resources = {
       Leave: 'Salir',
     },
   },
-  ch: {
+  zh: {
     translation: {
       apple: '苹果',
       backpack: '背包',
