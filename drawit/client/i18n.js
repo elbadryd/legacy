@@ -59,7 +59,7 @@ const resources = {
       sock: 'calcetín',
       speaker: 'altavoz',
       star: 'estrella',
-      sun: 'Dom',
+      sun: 'sol',
       table: 'mesa',
       toothbrush: 'cepillo de dientes',
       tree: 'árbol',
