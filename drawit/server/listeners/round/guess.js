@@ -56,7 +56,7 @@ module.exports = async ({ data, socket, io }) => {
             }
           } else {
             console.log('message', message);
-            io.in(joinCode).emit('round:incorrect_guess', { nickname, message });
+            // io.in(joinCode).emit('round:incorrect_guess', { nickname, message });
           }
         });
       })

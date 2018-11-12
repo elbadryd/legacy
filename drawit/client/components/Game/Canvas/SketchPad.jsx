@@ -1,14 +1,24 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// import styled from 'react-emotion';
 import { setContextAction, setToolAction, addItemAction } from '../../../store/actions/game.actions';
 import { DEFAULT_TOOL } from './defaults';
 import tools from './tools';
 import socket from '../../../sockets';
 import { BorderStyles } from '../../../styles';
+// import Flex from '../../Utils/Flex';
 
-const CANVAS_WIDTH = window.innerWidth * 0.9;
-const CANVAS_HEIGHT = window.innerHeight * 0.7;
+const CANVAS_WIDTH = 500;
+const CANVAS_HEIGHT = 500;
+
+// const Container = styled(Flex)`
+//   ${BorderStyles}
+//   width: 100%;
+//   padding: 14px;
+//   margin-bottom: 12px;
+//   justify-content: space-between;
+// `;
 
 class SketchPad extends PureComponent {
   constructor(props) {
@@ -76,11 +86,11 @@ class SketchPad extends PureComponent {
     if (!this.props.disabled) {
       const { tool } = this.props;
       const position = this.getCursorPosition(event.changedTouches[0]);
-      
+
       tool.onMouseDown(position);
     }
   }
-  
+
   onTouchMove(event) {
     if (!this.props.disabled) {
       const { tool } = this.props;
@@ -94,10 +104,10 @@ class SketchPad extends PureComponent {
     if (!this.props.disabled) {
       const { tool, joinCode, dispatchItem } = this.props;
       const position = this.getCursorPosition(event.changedTouches[0]);
-      
+
       console.log(event.changedTouches[0], 'changed END');
       const item = tool.onMouseUp(position);
-      
+
       if (item) {
         socket.emit('round:draw', { item, joinCode });
         dispatchItem(item);
@@ -105,7 +115,7 @@ class SketchPad extends PureComponent {
       dispatchItem(item);
     }
   }
-  
+
   getCursorPosition({ clientX, clientY }) {
     const { top, left } = this.canvas.getBoundingClientRect();
 
@@ -116,23 +126,25 @@ class SketchPad extends PureComponent {
       mouseY: clientY - top,
     };
   }
- 
+
   render() {
     return (
-      <canvas
-        ref={(canvas) => { this.canvas = canvas; }}
-        className={BorderStyles}
-        width={CANVAS_WIDTH}
-        height={CANVAS_HEIGHT}
-        onMouseDown={this.onMouseDown}
-        onMouseMove={this.onMouseMove}
-        onMouseOut={this.onMouseUp}
-        onMouseUp={this.onMouseUp}
-        onBlur={this.onMouseUp}
-        onTouchStart={this.onTouchStart}
-        onTouchMove={this.onTouchMove}
-        onTouchEnd={this.onTouchEnd}
-      />
+      // <Container>
+        <canvas
+          ref={(canvas) => { this.canvas = canvas; }}
+          className={BorderStyles}
+          width={CANVAS_WIDTH}
+          height={CANVAS_HEIGHT}
+          onMouseDown={this.onMouseDown}
+          onMouseMove={this.onMouseMove}
+          onMouseOut={this.onMouseUp}
+          onMouseUp={this.onMouseUp}
+          onBlur={this.onMouseUp}
+          onTouchStart={this.onTouchStart}
+          onTouchMove={this.onTouchMove}
+          onTouchEnd={this.onTouchEnd}
+        />
+      // </Container>
     );
   }
 }

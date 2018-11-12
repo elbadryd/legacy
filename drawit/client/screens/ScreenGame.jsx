@@ -94,7 +94,6 @@ class ScreenGame extends PureComponent {
   onRoundStarted() {
     this.props.dispatchStart();
     this.setState({
-      roundEnded: false,
       endedWord: null,
       showScoreBoard: false,
     });

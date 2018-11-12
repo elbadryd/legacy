@@ -28,6 +28,6 @@ module.exports = {
   },
   GAME: {
     TIME_PER_ROUND: 90000,
-    WAIT_AFTER_ROUND_ENDS: 15000,
+    WAIT_AFTER_ROUND_ENDS: 7000,
   },
 };

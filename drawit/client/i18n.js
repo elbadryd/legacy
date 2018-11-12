@@ -59,7 +59,7 @@ const resources = {
       sock: 'calcetín',
       speaker: 'altavoz',
       star: 'estrella',
-      sun: 'Dom',
+      sun: 'sol',
       table: 'mesa',
       toothbrush: 'cepillo de dientes',
       tree: 'árbol',
@@ -224,7 +224,7 @@ i18n
     resources,
     lng: window.navigator.language,
 
-    keySeparator: false, // we do not use keys in form messages.welcome
+    keySeparator: false,
 
     interpolation: {
       escapeValue: false, // react already safes from xss
